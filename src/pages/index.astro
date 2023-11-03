@@ -1,0 +1,63 @@
+---
+import Layout from "../layouts/Layout.astro";
+import HeroSection from "../components/HeroSection.astro";
+import Section from "../components/shared/Section.astro";
+---
+
+<Layout title="Barbershop">
+  <HeroSection />
+  <Section>
+    <h2 class="text-4xl mb-4 font-extrabold">Services</h2>
+
+    <div class="flex gap-3 mb-6 text-xs">
+      <span
+        class="bg-violet-800 py-2 px-4 rounded text-white border border-violet-800 font-bold"
+        >Barber</span
+      >
+      <span class="py-2 px-4 rounded text-violet-800 border font-bold"
+        >Salon</span
+      >
+    </div>
+
+    <div class="flex flex-col">
+      <div class="flex flex-wrap">
+        <div>
+          <div class="flex justify-between mb-2">
+            <h3 class="font-bold">Haircuts</h3>
+            <div>$25</div>
+          </div>
+          <p>
+            A good haircut is the foundation of any good hairstyle. We offer a
+            variety of haircuts to suit your needs.
+          </p>
+        </div>
+
+        <div>
+          <div class="flex justify-between mb-2">
+            <h3 class="font-bold">Haircuts</h3>
+            <dic>$25</dic>
+          </div>
+          <p>
+            A good haircut is the foundation of any good hairstyle. We offer a
+            variety of haircuts to suit your needs.
+          </p>
+        </div>
+
+        <div>
+          <div class="flex justify-between mb-2">
+            <h3 class="font-bold">Haircuts</h3>
+            <dic>$25</dic>
+          </div>
+          <p>
+            A good haircut is the foundation of any good hairstyle. We offer a
+            variety of haircuts to suit your needs.
+          </p>
+        </div>
+      </div>
+
+      <div class="rounded h-full border-2 border-violet-800">
+        <img src="/images/barber-shave.jpg" alt="Barbershop" />
+      </div>
+    </div>
+  </Section>
+</Layout>

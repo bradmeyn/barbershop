@@ -1,11 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Section from "../components/shared/Section.astro";
-import { services } from "../consts";
+import Container from "../components/shared/Container.astro";
+import { services } from "../constants";
 ---
 
 <Layout title="Pricing">
-  <div class="relative min-h-[300px]">
+  <section class="relative min-h-[400px]">
     <!-- Background Image -->
     <img
       src="/images/banner.jpg"
@@ -17,19 +17,20 @@ import { services } from "../consts";
 
     <div class="relative z-20">
       <h1
-        class="text-white z-20 text-center text-24xl md:text-7xl font-bold h-full py-20"
+        class="text-white z-20 text-center text-24xl md:text-7xl font-bold h-full py-32"
       >
         Price List
       </h1>
     </div>
-  </div>
-  <Section>
+  </section>
+
+  <Container>
     <div class="py-20">
       <h2 class="text-4xl mb-4 font-extrabold">Services</h2>
 
       <div class="flex gap-3 mb-6 text-xs">
         <span
-          class="bg-violet-800 py-2 px-4 rounded text-white border border-violet-800 font-bold"
+          class="bg-violet-600 py-2 px-4 rounded text-white border border-violet-800 font-bold"
           >Barber</span
         >
         <span class="py-2 px-4 rounded text-violet-800 border font-bold"
@@ -46,13 +47,13 @@ import { services } from "../consts";
                   <h3 class="font-bold text-xl">{service.name}</h3>
                   <div class="text-xl">${service.price}</div>
                 </div>
-                <p class="mb-4">{service.description}</p>
+                <p class="mb-4 max-w-xl mr-10">{service.description}</p>
               </div>
             ))
           }
         </div>
 
-        <div class="rounded h-[300px] w-[500px] border border-purple-500">
+        <div class="rounded h-[300px] w-full border border-purple-500">
           <img
             class="w-full h-full object-cover object-center rounded"
             src="/images/barber-shave.jpg"
@@ -61,5 +62,6 @@ import { services } from "../consts";
         </div>
       </div>
     </div>
-  </Section>
+  </Container>
 </Layout>
+ ../constants

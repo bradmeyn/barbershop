@@ -1,17 +1,21 @@
 ---
 import HeroImage from "./HeroImage.astro";
-import Section from "./shared/Section.astro";
+import Container from "./shared/Container.astro";
 ---
 
 <HeroImage imgAlt="barbershop hero image" imgSrc="/images/hero_original.jpg">
   <!-- Text Content -->
-  <Section>
-    <div class="relative z-20 text-white mt-48 md:mt-64 max-w-lg">
+  <Container>
+    <div
+      class="text-center relative z-10 mx-auto text-white h-screen mt-96 max-w-[800px]"
+    >
       <h1 class="font-bold text-6xl md:text-7xl mb-8">
-        Your friendly neighbourhood barbers
+        Your friendly neighbourhood barber/salon
       </h1>
 
-      <p class="mb-8 font-semibold text-xl flex gap-2 items-center">
+      <p
+        class="mb-12 font-semibold text-xl flex gap-2 items-center justify-center"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="1em"
@@ -25,11 +29,11 @@ import Section from "./shared/Section.astro";
 
       <a
         href="#"
-        class="mt-8 px-4 py-3 bg-violet-600 text-white rounded font-bold hover:bg-violet-900"
+        class="mt-8 px-6 py-4 bg-violet-600 text-white rounded font-bold hover:bg-violet-900"
         >Book Appointment</a
       >
     </div>
-  </Section>
+  </Container>
 </HeroImage>
 
 <style>

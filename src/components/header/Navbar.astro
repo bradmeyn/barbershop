@@ -3,7 +3,7 @@
     <div class="flex items-center justify-between">
       <a href="/" class="block md:mt-0 mr-6">
         <div
-          class="w-full text-white md:text-left text-md font-semibold flex items-center gap-2"
+          class="w-full text-white md:text-left text-lg font-semibold flex items-center gap-2"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -17,10 +17,17 @@
         </div>
       </a>
       <div class="flex items-center">
-        <a href="/pricing" class="block md:mt-0 mr-6">Pricing</a>
+        <a href="/" class="block md:mt-0 mr-6 uppercase text-sm">Home</a>
+        <a href="/pricing" class="block md:mt-0 mr-6 uppercase text-sm">About</a
+        >
+        <a href="/pricing" class="block md:mt-0 mr-6 uppercase text-sm"
+          >Services</a
+        >
 
-        <a href="/book" class="bg-violet-600 p-2 text-white rounded"
-          >Book Appointment</a
+        <a
+          href="/book"
+          class="bg-violet-600 p-2 px-3 text-white rounded uppercase text-sm"
+          >Book</a
         >
       </div>
     </div>
@@ -33,29 +40,24 @@
   }
 
   .header-scrolled {
-    background-color: #333; /* or any color you want */
     transition: background-color 0.3s; /* smooth transition */
   }
 </style>
 
 <script>
-  // When the user scrolls the page, execute myFunction
-  window.onscroll = function () {
-    myFunction();
-  };
+  document.addEventListener("DOMContentLoaded", (event) => {
+    // Get the header after the DOM is fully loaded
+    const header = document.querySelector("header");
 
-  // Get the header
-  var header = document.querySelector("header");
-
-  // Get the offset position of the navbar
-  var sticky = header.offsetTop;
-
-  // Add the .header-scrolled class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
-  function myFunction() {
-    if (window.pageYOffset > sticky) {
-      header.classList.add("header-scrolled");
-    } else {
-      header.classList.remove("header-scrolled");
-    }
-  }
+    window.addEventListener("scroll", () => {
+      // Check for header and window scroll position
+      if (header) {
+        if (window.scrollY > 0) {
+          header.classList.add("header-scrolled", "bg-slate-900");
+        } else {
+          header.classList.remove("header-scrolled", "bg-slate-900");
+        }
+      }
+    });
+  });
 </script>

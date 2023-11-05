@@ -2,142 +2,18 @@
 import Layout from "../layouts/Layout.astro";
 import HeroSection from "../components/HeroSection.astro";
 import Container from "../components/shared/Container.astro";
-import ImageTextBlock from "../components/ImageTextBlock.astro";
+import AboutSection from "../components/AboutSection.astro";
 import { OPENING_HOURS } from "../constants";
+import ServicesSection from "../components/ServicesSection.astro";
+import HoursSection from "../components/HoursSection.astro";
 ---
 
 <Layout title="Barbershop">
   <HeroSection />
 
-  <ImageTextBlock />
+  <AboutSection />
 
-  <section class="py-14 bg-slate-900">
-    <Container>
-      <small class="text-violet-300 font-bold">Appointments</small>
+  <HoursSection />
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-        <div class="max-w-[500px]">
-          <h2 class="text-4xl mb-4 text-slate-100 font-semibold">
-            02 4933 4111
-          </h2>
-          {
-            OPENING_HOURS.map((oh) => (
-              <p class="flex justify-between gap-3 mb-2 text-slate-400 border-b border-slate-700">
-                <span>{oh.day}</span>
-                <span>{oh.hours}</span>
-              </p>
-            ))
-          }
-        </div>
-
-        <div class="w-full">
-          <img
-            class="w-full h-full object-cover object-center rounded"
-            src="/images/Map-Placeholder.png"
-            alt="Barbershop"
-            <
-          />
-        </div>
-      </div>
-    </Container>
-  </section>
-
-  <section class="py-14">
-    <Container>
-      <h2 class="text-4xl mb-4 text-slate-800 font-semibold font-serif">
-        Services for all
-      </h2>
-
-      <div class="flex flex-wrap gap-4">
-        <div
-          class="relative rounded overflow-hidden flex-grow min-w-[250px] h-[300px]"
-        >
-          <img
-            src="/images/salon-shampoo.jpg"
-            class="object-cover object-center w-full h-full absolute z-0"
-          />
-          <!-- Overlay -->
-          <div class="absolute inset-0 bg-slate-900 opacity-40 z-10"></div>
-
-          <div
-            class="absolute bottom-0 flex flex-col items-center justify-center z-20 p-2"
-          >
-            <h3 class="text-4xl text-white font-semibold">Treatments</h3>
-            <!-- <p class="text-white text-center">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-            voluptatum, quibusdam, quia, quod voluptates
-          </p> -->
-          </div>
-        </div>
-
-        <div
-          class="relative rounded overflow-hidden flex-grow min-w-[250px] h-[300px]"
-        >
-          <img
-            src="/images/salon-shampoo.jpg"
-            class="object-cover object-center w-full h-full absolute z-0"
-          />
-          <!-- Overlay -->
-          <div class="absolute inset-0 bg-slate-900 opacity-40 z-10"></div>
-
-          <div
-            class="absolute bottom-0 flex flex-col items-center justify-center z-20 p-2"
-          >
-            <h3 class="text-4xl text-white font-semibold">Treatments</h3>
-            <!-- <p class="text-white text-center">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-            voluptatum, quibusdam, quia, quod voluptates
-          </p> -->
-          </div>
-        </div>
-
-        <div
-          class="relative rounded overflow-hidden flex-grow min-w-[250px] h-[300px]"
-        >
-          <img
-            src="/images/salon-shampoo.jpg"
-            class="object-cover object-center w-full h-full absolute z-0"
-          />
-          <!-- Overlay -->
-          <div class="absolute inset-0 bg-slate-900 opacity-40 z-10"></div>
-
-          <div
-            class="absolute bottom-0 flex flex-col items-center justify-center z-20 p-2"
-          >
-            <h3 class="text-4xl text-white font-semibold">Treatments</h3>
-            <!-- <p class="text-white text-center">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-            voluptatum, quibusdam, quia, quod voluptates
-          </p> -->
-          </div>
-        </div>
-
-        <div
-          class="relative rounded overflow-hidden flex-grow min-w-[250px] h-[300px]"
-        >
-          <img
-            src="/images/salon-shampoo.jpg"
-            class="object-cover object-center w-full h-full absolute z-0"
-          />
-          <!-- Overlay -->
-          <div class="absolute inset-0 bg-slate-900 opacity-40 z-10"></div>
-
-          <div
-            class="absolute bottom-0 flex flex-col items-center justify-center z-20 p-2"
-          >
-            <h3 class="text-4xl text-white font-semibold">Treatments</h3>
-            <!-- <p class="text-white text-center">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-            voluptatum, quibusdam, quia, quod voluptates
-          </p> -->
-          </div>
-        </div>
-      </div>
-
-      <a
-        class="text-violet-500 font-bold underline py-4 block text-xl"
-        href="/pricing">View full list ></a
-      >
-    </Container>
-  </section>
+  <ServicesSection />
 </Layout>

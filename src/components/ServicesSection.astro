@@ -1,5 +1,7 @@
 ---
 import Container from "../components/shared/Container.astro";
+
+const services = ["Haircuts", "Styling", "Treatments", "Coloring", "Shaving"];
 ---
 
 <section class="py-14">
@@ -10,8 +12,10 @@ import Container from "../components/shared/Container.astro";
     </h2>
 
     <div class="flex flex-wrap gap-4">
-      <div
-        class="relative rounded overflow-hidden flex-grow min-w-[250px] h-[300px]"
+      {
+        services.map((service) => (
+            <div
+        class="relative rounded overflow-hidden flex-grow min-w-[250px] max-w-[400px] h-[300px]"
       >
         <img
           src="/images/salon-shampoo.jpg"
@@ -24,75 +28,10 @@ import Container from "../components/shared/Container.astro";
           class="absolute bottom-0 flex flex-col items-center justify-center z-20 p-2"
         >
           <h3 class="text-4xl text-white font-semibold">Treatments</h3>
-          <!-- <p class="text-white text-center">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-            voluptatum, quibusdam, quia, quod voluptates
-          </p> -->
         </div>
       </div>
-
-      <div
-        class="relative rounded overflow-hidden flex-grow min-w-[250px] h-[300px]"
-      >
-        <img
-          src="/images/salon-shampoo.jpg"
-          class="object-cover object-center w-full h-full absolute z-0"
-        />
-        <!-- Overlay -->
-        <div class="absolute inset-0 bg-slate-900 opacity-40 z-10"></div>
-
-        <div
-          class="absolute bottom-0 flex flex-col items-center justify-center z-20 p-2"
-        >
-          <h3 class="text-4xl text-white font-semibold">Treatments</h3>
-          <!-- <p class="text-white text-center">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-            voluptatum, quibusdam, quia, quod voluptates
-          </p> -->
-        </div>
-      </div>
-
-      <div
-        class="relative rounded overflow-hidden flex-grow min-w-[250px] h-[300px]"
-      >
-        <img
-          src="/images/salon-shampoo.jpg"
-          class="object-cover object-center w-full h-full absolute z-0"
-        />
-        <!-- Overlay -->
-        <div class="absolute inset-0 bg-slate-900 opacity-40 z-10"></div>
-
-        <div
-          class="absolute bottom-0 flex flex-col items-center justify-center z-20 p-2"
-        >
-          <h3 class="text-4xl text-white font-semibold">Treatments</h3>
-          <!-- <p class="text-white text-center">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-            voluptatum, quibusdam, quia, quod voluptates
-          </p> -->
-        </div>
-      </div>
-
-      <div
-        class="relative rounded overflow-hidden flex-grow min-w-[250px] h-[300px]"
-      >
-        <img
-          src="/images/salon-shampoo.jpg"
-          class="object-cover object-center w-full h-full absolute z-0"
-        />
-        <!-- Overlay -->
-        <div class="absolute inset-0 bg-slate-900 opacity-40 z-10"></div>
-
-        <div
-          class="absolute bottom-0 flex flex-col items-center justify-center z-20 p-2"
-        >
-          <h3 class="text-4xl text-white font-semibold">Treatments</h3>
-          <!-- <p class="text-white text-center">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-            voluptatum, quibusdam, quia, quod voluptates
-          </p> -->
-        </div>
-      </div>
+        ))
+      }
     </div>
 
     <a

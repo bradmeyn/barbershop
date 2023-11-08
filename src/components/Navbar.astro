@@ -20,22 +20,24 @@ import Container from "./shared/Container.astro";
 
 <header class="header border border-red-500 text-white" id="header">
   <Container>
-    <nav class="nav-menu nav-menu--active">
+    <nav class="nav-menu">
       <a href="/" class="header__logo">
         <span>LOGO</span>
       </a>
 
-      <ul class="links">
-        {
-          links.map((link) => (
-            <li class="nav__item">
-              <a href="{{ link.url }}" class="nav__link">
-                {link.label}
-              </a>
-            </li>
-          ))
-        }
-      </ul>
+      <div class="nav-links">
+        <ul>
+          {
+            links.map((link) => (
+              <li class="nav__item">
+                <a href="{{ link.url }}" class="nav__link">
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
 
       <button class="hamburger">
         <div class="hamburger__line"></div>
@@ -63,41 +65,51 @@ import Container from "./shared/Container.astro";
   nav {
     display: flex;
     width: 100%;
-    padding: 1rem 0;
     justify-content: space-between;
     align-items: center;
     z-index: 2030;
     border: solid green 2px;
   }
 
-  .links {
+  .nav-links {
+    background-color: slategray;
     height: 100vh;
-    position: absolute;
-    width: 100%;
+    width: 75%;
+    position: fixed;
     top: 0;
-    left: 0;
-
-    display: flex;
-    flex-direction: column;
-    /* list-style: none;
-    margin: 0;
-    padding: 0; */
+    right: 0;
+    z-index: 100;
+    transform: translateX(100%);
+    transition: all 0.3s ease-in-out;
+    opacity: 0;
   }
 
-  .nav-menu--active .links {
-    display: none;
+  ul {
+    margin-top: 200px;
+    border: solid salmon 3px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  li,
+  li a {
+    width: 100%;
+  }
+
+  .nav-menu--active .nav-links {
+    transform: translateX(0);
+    opacity: 1;
   }
 
   .nav__item {
-    color: #708090;
+    color: #fff;
     text-align: center;
-    border: solid 1px royalblue;
     padding: 20px;
   }
 
   .hamburger {
     background: #ffffff;
-    z-index: 10;
+    z-index: 1000;
     border: none;
     cursor: pointer;
     border-radius: 5px;
@@ -114,7 +126,7 @@ import Container from "./shared/Container.astro";
   }
 
   .hamburger.hamburger--active .hamburger__line:nth-child(1) {
-    transform: translatey(10px) rotate(45deg);
+    transform: translatey(7px) rotate(45deg);
     background-color: salmon;
   }
 
@@ -123,7 +135,7 @@ import Container from "./shared/Container.astro";
   }
 
   .hamburger.hamburger--active .hamburger__line:nth-child(3) {
-    transform: translatey(-10px) rotate(-45deg);
+    transform: translatey(-7px) rotate(-45deg);
     background-color: salmon;
   }
 
@@ -136,7 +148,7 @@ import Container from "./shared/Container.astro";
       display: none;
     }
 
-    .links {
+    ul {
       position: relative;
       height: auto;
       display: flex;
@@ -145,19 +157,36 @@ import Container from "./shared/Container.astro";
       align-items: center;
     }
   }
+
+  body.blurry .content {
+    filter: blur(5px) brightness(0.6);
+    overflow-y: hidden;
+    display: block;
+  }
+
+  .scroll-lock {
+    height: 100vh;
+    overflow: hidden;
+    border: solid 5px red;
+  }
 </style>
 
 <script>
   document.addEventListener("DOMContentLoaded", (event) => {
     // Get the header after the DOM is fully loaded
     const header = document.querySelector("header");
-
     const hamburger = document.querySelector(".hamburger");
     const nav = document.querySelector(".nav-menu");
+    const body = document.querySelector("body");
 
     hamburger?.addEventListener("click", () => {
       hamburger.classList.toggle("hamburger--active");
       nav?.classList.toggle("nav-menu--active");
+
+      body?.classList.toggle("blurry");
+      body?.classList.toggle("scroll-lock");
+
+      console.log(body);
     });
 
     window.addEventListener("scroll", () => {
@@ -168,6 +197,12 @@ import Container from "./shared/Container.astro";
         } else {
           header.classList.remove("header-scrolled", "bg-slate-900");
         }
+      }
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 760) {
+        hamburger?.classList.remove("hamburger--active");
       }
     });
   });

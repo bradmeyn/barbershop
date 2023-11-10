@@ -18,7 +18,7 @@ const links = [
 import Container from "./shared/Container.astro";
 ---
 
-<header class="header border border-red-500 text-white" id="header">
+<header class="header text-white border border-sky-600" id="header">
   <Container>
     <nav class="nav-menu">
       <a href="/" class="header__logo">
@@ -58,7 +58,6 @@ import Container from "./shared/Container.astro";
   .header__logo {
     font-size: 1.5rem;
     font-weight: 700;
-    color: blue;
     z-index: 1000;
   }
 
@@ -67,8 +66,7 @@ import Container from "./shared/Container.astro";
     width: 100%;
     justify-content: space-between;
     align-items: center;
-    z-index: 2030;
-    border: solid green 2px;
+    z-index: 1000;
   }
 
   .nav-links {
@@ -80,13 +78,12 @@ import Container from "./shared/Container.astro";
     right: 0;
     z-index: 100;
     transform: translateX(100%);
-    transition: all 0.3s ease-in-out;
-    opacity: 0;
+    visibility: hidden; /* Hide initially */
+    transition: transform 0.2s ease-in-out;
   }
 
   ul {
     margin-top: 200px;
-    border: solid salmon 3px;
     display: flex;
     flex-direction: column;
   }
@@ -99,6 +96,7 @@ import Container from "./shared/Container.astro";
   .nav-menu--active .nav-links {
     transform: translateX(0);
     opacity: 1;
+    visibility: visible;
   }
 
   .nav__item {
@@ -108,21 +106,18 @@ import Container from "./shared/Container.astro";
   }
 
   .hamburger {
-    background: #ffffff;
     z-index: 1000;
     border: none;
     cursor: pointer;
     border-radius: 5px;
-    padding: 0.5rem;
   }
 
   .hamburger__line {
-    background-color: #708090;
-    height: 3px;
+    background-color: #fff;
+    height: 2px;
     width: 25px;
-    margin: 0.2rem 0;
+    margin: 5px 0;
     transition: 0.2s ease-in-out;
-    border-radius: 2px;
   }
 
   .hamburger.hamburger--active .hamburger__line:nth-child(1) {
@@ -149,6 +144,7 @@ import Container from "./shared/Container.astro";
     }
 
     ul {
+      margin-top: auto;
       position: relative;
       height: auto;
       display: flex;
@@ -156,18 +152,16 @@ import Container from "./shared/Container.astro";
       justify-content: flex-end;
       align-items: center;
     }
-  }
 
-  body.blurry .content {
-    filter: blur(5px) brightness(0.6);
-    overflow-y: hidden;
-    display: block;
-  }
-
-  .scroll-lock {
-    height: 100vh;
-    overflow: hidden;
-    border: solid 5px red;
+    .nav-links {
+      position: relative;
+      width: auto;
+      height: auto;
+      visibility: visible;
+      transform: translateX(0);
+      transition: none;
+      background-color: transparent;
+    }
   }
 </style>
 
@@ -177,18 +171,34 @@ import Container from "./shared/Container.astro";
     const header = document.querySelector("header");
     const hamburger = document.querySelector(".hamburger");
     const nav = document.querySelector(".nav-menu");
-    const body = document.querySelector("body");
+    const navLinks = document.querySelectorAll(".nav__link");
 
     hamburger?.addEventListener("click", () => {
       hamburger.classList.toggle("hamburger--active");
       nav?.classList.toggle("nav-menu--active");
-
-      body?.classList.toggle("blurry");
-      body?.classList.toggle("scroll-lock");
-
-      console.log(body);
     });
 
+    // Close navbar when a nav link is clicked
+    navLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        hamburger?.classList.remove("hamburger--active");
+        nav?.classList.remove("nav-menu--active");
+      });
+    });
+
+    // Close navbar when clicking outside
+    document.addEventListener("click", (e) => {
+      const isClickInsideNav =
+        nav?.contains(e.target as Node) ||
+        hamburger?.contains(e.target as Node);
+
+      if (!isClickInsideNav) {
+        hamburger?.classList.remove("hamburger--active");
+        nav?.classList.remove("nav-menu--active");
+      }
+    });
+
+    // Background color change on scroll
     window.addEventListener("scroll", () => {
       // Check for header and window scroll position
       if (header) {
@@ -203,6 +213,7 @@ import Container from "./shared/Container.astro";
     window.addEventListener("resize", () => {
       if (window.innerWidth > 760) {
         hamburger?.classList.remove("hamburger--active");
+        nav?.classList.remove("nav-menu--active");
       }
     });
   });

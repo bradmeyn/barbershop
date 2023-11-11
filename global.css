@@ -1,0 +1,4 @@
+body.navbar--active main,
+body.navbar--active footer {
+  filter: blur(5px);
+}
